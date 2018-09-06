@@ -56,7 +56,7 @@ class ReviewBaseController: UIViewController
             let cv = ReviewCollectionView(frame: .zero, collectionViewLayout: layout)
             let array = DataContainer.shared.carBrakeDiscPhotos
             cv.photosArray = array
-            cv.titleStringArray = ["Højre forhjuls bremseskive", "Venstre forhjuls bremseskive", "Venstre baghjuls bremseskive", "Højre baghjuls bremseskive"]
+            cv.titleStringArray = ["Højre forhjulsbremseskive", "Venstre forhjulsbremseskive", "Venstre baghjulsbremseskive", "Højre baghjulsbremseskive"]
             
             return cv
     }()
@@ -69,7 +69,7 @@ class ReviewBaseController: UIViewController
             let cv = ReviewCollectionView(frame: .zero, collectionViewLayout: layout)
             let array = DataContainer.shared.carMiscPhotos
             cv.photosArray = array
-            cv.titleStringArray = ["Interiøret foran", "Interiøret bagi", "Antal kilometer kørt", "Servicebog"]
+            cv.titleStringArray = ["Interiøret foran", "Interiøret bagi", "Kilometerstand", "Servicebog"]
             
             return cv
     }()
@@ -87,7 +87,7 @@ class ReviewBaseController: UIViewController
             
             for (index, _) in DataContainer.shared.carDamagePhotos.enumerated()
             {
-                carDamageStrings.append("Skade \(index + 1)")
+                carDamageStrings.append("Kosmetisk bemærkning \(index + 1)")
             }
             
             cv.titleStringArray = carDamageStrings
@@ -95,59 +95,25 @@ class ReviewBaseController: UIViewController
             return cv
     }()
     
-    let wheelPatternLabel: UILabel =
+    let wheelContainerView: ContainerView =
     {
-        let label = UILabel()
-        label.text = "Dækmønster mål"
-        label.font = UIFont(name: "Montserrat-Regular", size: 32)
-        label.textColor = .white
-        label.sizeToFit()
+        let cv = ContainerView(title: "Dækmønster", subTitle1: "Forhjul", value1: DataContainer.shared.frontWheelPatternMeasurement ?? "", subTitle2: "Baghjul", value2: DataContainer.shared.backWheelPatternMeasurement ?? "")
         
-        return label
+        return cv
     }()
     
-    let frontWheelPatternLabel: UILabel =
+    let brakeDiscContainerView: ContainerView =
     {
-        let label = UILabel()
-        label.text = "Forhjul"
-        label.font = UIFont(name: "Montserrat-Regular", size: 18)
-        label.textColor = .white
-        label.sizeToFit()
+        let cv = ContainerView(title: "Stand på\nbremser", subTitle1: "Bremser for", value1: DataContainer.shared.frontBrakeDiscMeasurement ?? "", subTitle2: "Bremser bag", value2: DataContainer.shared.backBrakeDiscMeasurement ?? "")
         
-        return label
+        return cv
     }()
     
-    let frontWheelPatternValueLabel: UILabel =
+    let serviceContainerView: ContainerView =
     {
-        let label = UILabel()
-        label.text = DataContainer.shared.frontWheelPatternMeasurement?.toString()
-        label.font = UIFont(name: "Montserrat-Regular", size: 32)
-        label.textColor = .white
-        label.sizeToFit()
+        let cv = ContainerView(title: "Næste service", subTitle1: "Kilometer", value1: DataContainer.shared.serviceKilometers ?? "", subTitle2: "Dage", value2: DataContainer.shared.serviceDays ?? "")
         
-        return label
-    }()
-    
-    let backWheelPatternLabel: UILabel =
-    {
-        let label = UILabel()
-        label.text = "Baghjul"
-        label.font = UIFont(name: "Montserrat-Regular", size: 18)
-        label.textColor = .white
-        label.sizeToFit()
-        
-        return label
-    }()
-    
-    let backWheelPatternValueLabel: UILabel =
-    {
-        let label = UILabel()
-        label.text = DataContainer.shared.backWheelPatternMeasurement?.toString()
-        label.font = UIFont(name: "Montserrat-Regular", size: 32)
-        label.textColor = .white
-        label.sizeToFit()
-        
-        return label
+        return cv
     }()
     
     let frostEffect: UIVisualEffectView =
@@ -157,7 +123,7 @@ class ReviewBaseController: UIViewController
         
         return frost
     }()
-    
+
 }
 
 

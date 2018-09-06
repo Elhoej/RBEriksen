@@ -26,7 +26,7 @@ class CarDamageCell: UICollectionViewCell
         label.text = "Eksempel"
         label.font = UIFont(name: "Montserrat-Regular", size: 34)
         label.textColor = .darkGray
-        label.alpha = 0.5
+        label.alpha = 0.8
         label.textAlignment = .center
         label.sizeToFit()
         label.isHidden = true
@@ -49,8 +49,6 @@ class CarDamageCell: UICollectionViewCell
         exampleLabel.centerXAnchor.constraint(equalTo: carDamageImageView.centerXAnchor).isActive = true
         exampleLabel.centerYAnchor.constraint(equalTo: carDamageImageView.centerYAnchor).isActive = true
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

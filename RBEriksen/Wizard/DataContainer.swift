@@ -15,12 +15,12 @@ class DataContainer
     var carBrand: String?
     var carSeries: String?
     
-    var frontWheelPatternMeasurement: Double?
-    var backWheelPatternMeasurement: Double?
-    var backLeftBrakeDiscMeasurement: Double?
-    var backRightBrakeDiscMeasurement: Double?
-    var frontRightBrakeDiscMeasurement: Double?
-    var frontLeftBrakeDiscMeasurement: Double?
+    var frontWheelPatternMeasurement: String?
+    var backWheelPatternMeasurement: String?
+    var backBrakeDiscMeasurement: String?
+    var frontBrakeDiscMeasurement: String?
+    var serviceKilometers: String?
+    var serviceDays: String?
     
     var carPhotos = [UIImage]()
     var carDamagePhotos = [UIImage]()
@@ -40,10 +40,10 @@ class DataContainer
         self.carSeries = nil
         self.frontWheelPatternMeasurement = nil
         self.backWheelPatternMeasurement = nil
-        self.backLeftBrakeDiscMeasurement = nil
-        self.backRightBrakeDiscMeasurement = nil
-        self.frontRightBrakeDiscMeasurement = nil
-        self.frontLeftBrakeDiscMeasurement = nil
+        self.backBrakeDiscMeasurement = nil
+        self.frontBrakeDiscMeasurement = nil
+        self.serviceDays = nil
+        self.serviceKilometers = nil
     }
 }
 

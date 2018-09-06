@@ -137,14 +137,12 @@ class WheelPatternController: UIViewController
     {
         guard let frontWheelMeasurement = frontWheelPatternTextField.text else { return }
         guard let backWheelMeasurement = backWheelPatternTextField.text else { return }
-        guard let frontDouble = Double(frontWheelMeasurement.replacingOccurrences(of: ",", with: ".")) else { return }
-        guard let backDouble = Double(backWheelMeasurement.replacingOccurrences(of: ",", with: ".")) else { return }
         
-        DataContainer.shared.frontWheelPatternMeasurement = frontDouble
-        DataContainer.shared.backWheelPatternMeasurement = backDouble
+        DataContainer.shared.frontWheelPatternMeasurement = "\(frontWheelMeasurement) mm"
+        DataContainer.shared.backWheelPatternMeasurement = "\(backWheelMeasurement) mm"
         
-        let reviewController = ReviewController()
-        navigationController?.pushViewController(reviewController, animated: true)
+        let brakeDiscController = BrakeDiscController()
+        navigationController?.pushViewController(brakeDiscController, animated: true)
     }
     
     @objc private func handleGoBack()

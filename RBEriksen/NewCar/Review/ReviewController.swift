@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import PDFGenerator
 
-class ReviewController: ReviewBaseController
+class ReviewController: ReviewBaseController, MailControllerDelegate
 {
     var values = [:] as [String: Any]
     var carDamagesDictionary = [String: String]()
@@ -20,72 +21,68 @@ class ReviewController: ReviewBaseController
     var uploadCounter = 0
     var numberOfImages = 0
     
+    //MARK: - Open Report from database
+    
     var report: Report?
     {
         didSet
         {
-            finishButton.isHidden = true
-            
-            carBrandAndSeriesLabel.text = "\(report?.carBrand ?? "Car Brand"), \(report?.carSeries ?? "Car Series")"
-            
-            frontWheelPatternValueLabel.text = report?.frontWheelPatternMeasurement
-            backWheelPatternValueLabel.text = report?.backWheelPatternMeasurement
-            
-            if let carWheelPhotos = report?.carWheelPhotos
+            guard let report = report else { return }
+            setReportValues(report: report)
+            changeFinishButton()
+        }
+    }
+    
+    private func setReportValues(report: Report)
+    {
+        carBrandAndSeriesLabel.text = "\(report.carBrand ?? ""), \(report.carSeries ?? "")"
+        wheelContainerView.setNewValues(value1: report.frontWheelPatternMeasurement ?? "", value2: report.backWheelPatternMeasurement ?? "")
+        brakeDiscContainerView.setNewValues(value1: report.frontDiscBrakeMeasurement ?? "", value2: report.backDiscBrakeMeasurement ?? "")
+        serviceContainerView.setNewValues(value1: report.serviceKilometers ?? "", value2: report.serviceDays ?? "")
+        
+        if let carWheelPhotos = report.carWheelPhotos
+        {
+            sortAndAppendImages(carWheelPhotos, carWheelImagesCollectionView, false)
+        }
+        
+        if let carPhotos = report.carPhotos
+        {
+            sortAndAppendImages(carPhotos, carImagesCollectionView, false)
+        }
+        
+        if let carBrakeDiscPhotos = report.carBrakeDiscPhotos
+        {
+            sortAndAppendImages(carBrakeDiscPhotos, carBrakeDiscImagesCollectionView, false)
+        }
+        
+        if let carMiscPhotos = report.carMiscPhotos
+        {
+            sortAndAppendImages(carMiscPhotos, carMiscImagesCollectionView, false)
+        }
+        
+        if let carDamagePhotos = report.carDamagePhotos
+        {
+            sortAndAppendImages(carDamagePhotos, carDamageImagesCollectionView, true)
+        }
+    }
+    
+    private func sortAndAppendImages(_ dictionary: [String: String],_ collectionView: ReviewCollectionView, _ isCarDamageImages: Bool)
+    {
+        let sortedTuple = dictionary.sorted { $0.key < $1.key }
+        let valuesTupleSorted = Array(sortedTuple.map({ $0.value }))
+        collectionView.photoUrlArray = valuesTupleSorted
+        
+        if isCarDamageImages
+        {
+            for (index, _) in valuesTupleSorted.enumerated()
             {
-                print(carWheelPhotos)
-                let sorted = carWheelPhotos.sorted { $0.key < $1.key }
-                let valuesArraySorted = Array(sorted.map({ $0.value }))
-                let urlArray = valuesArraySorted
-                
-                carWheelImagesCollectionView.photoUrlArray = urlArray
-            }
-            
-            
-            if let carPhotos = report?.carPhotos
-            {
-                let sorted = carPhotos.sorted { $0.key < $1.key }
-                let valuesArraySorted = Array(sorted.map({ $0.value }))
-                let urlArray = valuesArraySorted
-                
-                carImagesCollectionView.photoUrlArray = urlArray
-            }
-            
-            if let brakeDiscPhotos = report?.carBrakeDiscPhotos
-            {
-                let sorted = brakeDiscPhotos.sorted { $0.key < $1.key }
-                let valuesArraySorted = Array(sorted.map({ $0.value }))
-                let urlArray = valuesArraySorted
-                
-                carBrakeDiscImagesCollectionView.photoUrlArray = urlArray
-            }
-            
-            
-            if let carMiscPhotos = report?.carMiscPhotos
-            {
-                let sorted = carMiscPhotos.sorted { $0.key < $1.key }
-                let valuesArraySorted = Array(sorted.map({ $0.value }))
-                let urlArray = valuesArraySorted
-            
-                carMiscImagesCollectionView.photoUrlArray = urlArray
-            }
-            
-            if let carDamagePhotos = report?.carDamagePhotos
-            {
-                let sorted = carDamagePhotos.sorted { $0.key < $1.key }
-                let valuesArraySorted = Array(sorted.map({ $0.value }))
-                let urlArray = valuesArraySorted
-                
-                carDamageImagesCollectionView.photoUrlArray = urlArray
-                
-                for (index, _) in urlArray.enumerated()
-                {
-                    self.carDamageImagesCollectionView.titleStringArray?.append("Skade \(index + 1)")
-                }
+                collectionView.titleStringArray?.append("Kosmetisk bemærkning \(index + 1)")
             }
         }
     }
-        
+    
+    //MARK: - UI Properties
+    
     let backButton: UIButton =
     {
         let button = UIButton(type: .system)
@@ -145,6 +142,8 @@ class ReviewController: ReviewBaseController
         setupUI()
     }
     
+    //MARK: - Upload Report
+    
     @objc private func prepareToUploadReport()
     {
         uploadImages()
@@ -179,6 +178,8 @@ class ReviewController: ReviewBaseController
                 
                 dispatchGroup.leave()
             }
+            
+            
         }
         
         for (index, image) in DataContainer.shared.carWheelPhotos.enumerated()
@@ -281,8 +282,12 @@ class ReviewController: ReviewBaseController
     {
         let carBrand = DataContainer.shared.carBrand ?? ""
         let carSeries = DataContainer.shared.carSeries ?? ""
-        let frontWheelPatternMeasurement = DataContainer.shared.frontWheelPatternMeasurement?.toString() ?? ""
-        let backWheelPatternMeasurement = DataContainer.shared.backWheelPatternMeasurement?.toString() ?? ""
+        let frontWheelPatternMeasurement = DataContainer.shared.frontWheelPatternMeasurement ?? ""
+        let backWheelPatternMeasurement = DataContainer.shared.backWheelPatternMeasurement ?? ""
+        let frontDiscBrakeMeasurement = DataContainer.shared.frontBrakeDiscMeasurement ?? ""
+        let backDiscBrakeMeasurement = DataContainer.shared.backBrakeDiscMeasurement ?? ""
+        let serviceKilometers = DataContainer.shared.serviceKilometers ?? ""
+        let serviceDays = DataContainer.shared.serviceDays ?? ""
         let timestamp = Int(Date().timeIntervalSince1970)
         
         values["timestamp"] = timestamp
@@ -290,6 +295,10 @@ class ReviewController: ReviewBaseController
         values["carSeries"] = carSeries
         values["frontWheelPatternMeasurement"] = frontWheelPatternMeasurement
         values["backWheelPatternMeasurement"] = backWheelPatternMeasurement
+        values["frontDiscBrakeMeasurement"] = frontDiscBrakeMeasurement
+        values["backDiscBrakeMeasurement"] = backDiscBrakeMeasurement
+        values["serviceKilometers"] = serviceKilometers
+        values["serviceDays"] = serviceDays
         
         uploadingView.statusLabel.text = "Uploading report..."
         
@@ -321,6 +330,154 @@ class ReviewController: ReviewBaseController
         navigationController?.popViewController(animated: true)
     }
     
+    //MARK: - Mail/PDF
+    
+    private func changeFinishButton()
+    {
+        finishButton.removeTarget(nil, action: #selector(prepareToUploadReport), for: .touchUpInside)
+        finishButton.setImage(nil, for: .normal)
+        finishButton.setTitle("Send Email", for: .normal)
+        finishButton.addTarget(self, action: #selector(sendReportWithEmail), for: .touchUpInside)
+    }
+    
+    @objc private func sendReportWithEmail()
+    {
+        var data: Data?
+        
+        let frontPage = PDFFrontPage(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        
+        let title = "\(report?.carBrand ?? "Car Brand") \(report?.carSeries ?? "Car Series")"
+        
+        frontPage.setValues(title: title, frontWheel: report?.frontWheelPatternMeasurement ?? "", backWheel: report?.backWheelPatternMeasurement ?? "", frontBrake: report?.frontDiscBrakeMeasurement ?? "", backBrake: report?.backDiscBrakeMeasurement ?? "", kilometers: report?.serviceKilometers ?? "", days: report?.serviceDays ?? "")
+        
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        frontPage.frontCarImageView.loadImageUsingCacheWithUrlString(carImagesCollectionView.photoUrlArray[0]) {
+            dispatchGroup.leave()
+        }
+        
+        let carPhotosPage = createPDFPage(dispatchGroup: dispatchGroup, collectionView: carImagesCollectionView)
+        let carWheelPhotosPage = createPDFPage(dispatchGroup: dispatchGroup, collectionView: carWheelImagesCollectionView)
+        let carBrakeDiscPhotosPage = createPDFPage(dispatchGroup: dispatchGroup, collectionView: carBrakeDiscImagesCollectionView)
+        let carMiscPhotosPage = createPDFPage(dispatchGroup: dispatchGroup, collectionView: carMiscImagesCollectionView)
+        let carDamagesPhotosPage = PDFPageTemplate(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        
+        for (index, url) in carDamageImagesCollectionView.photoUrlArray.suffix(4).enumerated()
+        {
+            dispatchGroup.enter()
+            carDamagesPhotosPage.labelArray[index].text = carDamageImagesCollectionView.titleStringArray?[index]
+            
+            carDamagesPhotosPage.imageViewArray[index].loadImageUsingCacheWithUrlString(url) {
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            
+            do
+            {
+                data = try PDFGenerator.generated(by: [frontPage, carPhotosPage, carMiscPhotosPage, carWheelPhotosPage, carBrakeDiscPhotosPage, carDamagesPhotosPage])
+                
+                if let data = data
+                {
+                    self.showAlertForEmail(data: data, title: title)
+                }
+                else
+                {
+                    self.showAlert(with: "An error occured while generating PDF, please try again.")
+                }
+                
+            }catch (let error)
+            {
+                print("Error when generating PDF: \(error)")
+            }
+        }
+    }
+    
+    private func showAlertForEmail(data: Data, title: String)
+    {
+        let alert = UIAlertController(title: "Indtast kundens navn og email", message: nil, preferredStyle: .alert)
+        alert.addTextField(configurationHandler: { (nameTextField: UITextField) in
+            nameTextField.placeholder = "Name"
+        })
+        alert.addTextField(configurationHandler: { (emailTextField: UITextField) in
+            emailTextField.placeholder = "Email"
+            emailTextField.keyboardType = .emailAddress
+        })
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Okay", style: .default, handler: { (okayButton: UIAlertAction) in
+            
+            guard let name = alert.textFields?[0].text, let email = alert.textFields?[1].text else { return }
+            
+            let isValid = name.count > 0 && email.count > 0
+            okayButton.isEnabled = isValid ? true : false
+            
+            do
+            {
+                self.showMailController(data: data, title: title, name: name, email: email)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
+    private func showMailController(data: Data, title: String, name: String, email: String)
+    {
+        let mailController = MailController()
+        mailController.didSendDelegate = self
+        mailController.setEmailValues(title: title, data: data, name: name, email: email)
+        mailController.mailComposeDelegate = mailController
+        self.present(mailController, animated: true, completion: nil)
+    }
+    
+    func didSendEmail()
+    {
+        if let keyWindow = UIApplication.shared.keyWindow
+        {
+            keyWindow.addSubview(uploadingView)
+            uploadingView.anchor(top: keyWindow.topAnchor, left: keyWindow.leftAnchor, bottom: keyWindow.bottomAnchor, right: keyWindow.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+            uploadingView.statusLabel.text = "Sending..."
+            
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+                
+                self.uploadingView.alpha = 1
+                
+            }, completion: { (completed) in
+                
+                self.uploadingView.carImage.image = #imageLiteral(resourceName: "postcar").withRenderingMode(.alwaysTemplate)
+                self.uploadingView.carImage.handleCarAnimation(self.uploadingView.frame.minX - 40, self.uploadingView.frame.midY - 29, self.uploadingView.frame.maxX + 40, self.uploadingView.frame.midY - 29)
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.45)
+                {
+                    self.uploadingView.statusLabel.text = "Sent!"
+                    self.uploadingView.carImage.cancelCarAnimation()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)
+                    {
+                        self.uploadingView.removeFromSuperview()
+                    }
+                }
+            })
+        }
+    }
+    
+    private func createPDFPage(dispatchGroup: DispatchGroup, collectionView: ReviewCollectionView) -> PDFPageTemplate
+    {
+        let pdfPage = PDFPageTemplate(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        
+        for (index, url) in collectionView.photoUrlArray.enumerated()
+        {
+            dispatchGroup.enter()
+            
+            pdfPage.labelArray[index].text = collectionView.titleStringArray?[index]
+            
+            pdfPage.imageViewArray[index].loadImageUsingCacheWithUrlString(url) {
+                dispatchGroup.leave()
+            }
+        }
+        
+        return pdfPage
+    }
+    
     fileprivate func setupUI()
     {
         view.addSubview(frostEffect)
@@ -332,11 +489,9 @@ class ReviewController: ReviewBaseController
         scrollView.addSubview(carBrakeDiscImagesCollectionView)
         scrollView.addSubview(carMiscImagesCollectionView)
         scrollView.addSubview(carDamageImagesCollectionView)
-        scrollView.addSubview(wheelPatternLabel)
-        scrollView.addSubview(frontWheelPatternLabel)
-        scrollView.addSubview(frontWheelPatternValueLabel)
-        scrollView.addSubview(backWheelPatternLabel)
-        scrollView.addSubview(backWheelPatternValueLabel)
+        scrollView.addSubview(wheelContainerView)
+        scrollView.addSubview(brakeDiscContainerView)
+        scrollView.addSubview(serviceContainerView)
         scrollView.addSubview(finishButton)
         
         let width = view.frame.width - 36
@@ -360,17 +515,13 @@ class ReviewController: ReviewBaseController
         
         carDamageImagesCollectionView.anchor(top: carMiscImagesCollectionView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 18, paddingRight: 0, paddingBottom: 0, width: width, height: 220)
         
-        wheelPatternLabel.anchor(top: carDamageImagesCollectionView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 18, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+        wheelContainerView.anchor(top: carDamageImagesCollectionView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 30, paddingLeft: 18, paddingRight: 0, paddingBottom: 0, width: width, height: 135)
         
-        frontWheelPatternLabel.anchor(top: wheelPatternLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 22, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+        brakeDiscContainerView.anchor(top: wheelContainerView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 18, paddingRight: 0, paddingBottom: 0, width: width, height: 170)
         
-        frontWheelPatternValueLabel.anchor(top: frontWheelPatternLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 3, paddingLeft: 22, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
+        serviceContainerView.anchor(top: brakeDiscContainerView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 18, paddingRight: 0, paddingBottom: 0, width: width, height: 135)
         
-        backWheelPatternLabel.anchor(top: frontWheelPatternValueLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 22, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
-        
-        backWheelPatternValueLabel.anchor(top: backWheelPatternLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: nil, paddingTop: 3, paddingLeft: 22, paddingRight: 0, paddingBottom: 0, width: 0, height: 0)
-        
-        finishButton.anchor(top: backWheelPatternValueLabel.bottomAnchor, left: nil, bottom: scrollView.bottomAnchor, right: nil, paddingTop: 40, paddingLeft: 18, paddingRight: 0, paddingBottom: -20, width: 120, height: 50)
+        finishButton.anchor(top: serviceContainerView.bottomAnchor, left: nil, bottom: scrollView.bottomAnchor, right: nil, paddingTop: 50, paddingLeft: 18, paddingRight: 0, paddingBottom: -30, width: 120, height: 50)
         finishButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
 }

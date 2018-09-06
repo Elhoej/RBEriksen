@@ -8,10 +8,10 @@
 
 import UIKit
 
-class ImageViewWithZoom: UIImageView, UIScrollViewDelegate
+class ImageViewWithZoom: UIImageView
 {
     var startingFrame: CGRect?
-    var blackBackgroundView: UIScrollView?
+    var blackBackgroundView: UIView?
     var startingImageView: UIImageView?
     var zoomingImageView: UIImageView?
     
@@ -33,20 +33,18 @@ class ImageViewWithZoom: UIImageView, UIScrollViewDelegate
         
         zoomingImageView = UIImageView(frame: startingFrame!)
         zoomingImageView?.image = startingImageView?.image
-        zoomingImageView?.isUserInteractionEnabled = false
+        zoomingImageView?.isUserInteractionEnabled = true
         zoomingImageView?.contentMode = .scaleAspectFill
         
         if let keyWindow = UIApplication.shared.keyWindow
         {
-            blackBackgroundView = UIScrollView(frame: keyWindow.frame)
-            blackBackgroundView?.delegate = self
-//            blackBackgroundView?.scrollRectToVisible((zoomingImageView?.frame)!, animated: true)
-            blackBackgroundView?.minimumZoomScale = 1.0
-            blackBackgroundView?.maximumZoomScale = 10.0
+            blackBackgroundView = UIView(frame: keyWindow.frame)
             blackBackgroundView?.backgroundColor = UIColor.black
             blackBackgroundView?.alpha = 0
             blackBackgroundView?.isUserInteractionEnabled = true
             blackBackgroundView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleZoomOut)))
+            zoomingImageView?.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture)))
+            zoomingImageView?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleZoomOut)))
             
             keyWindow.addSubview(blackBackgroundView!)
             keyWindow.addSubview(zoomingImageView!)
@@ -83,36 +81,13 @@ class ImageViewWithZoom: UIImageView, UIScrollViewDelegate
         })
     }
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView?
+    @objc func handlePinchGesture(recognizer: UIPinchGestureRecognizer)
     {
-        return zoomingImageView
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView)
-    {
-        
-        let subView = zoomingImageView
-        
-        let zeroPointFive: CGFloat = 0.5
-        
-        let offsetX = max(((scrollView.bounds.size.width - scrollView.contentSize.width) * zeroPointFive), 0.0)
-        
-        let offsetY = max((scrollView.bounds.size.height - scrollView.contentSize.height) * zeroPointFive, 0.0)
-        
-        // adjust the center of image view
-        
-        subView?.center = CGPoint(x: scrollView.contentSize.width * zeroPointFive + offsetX, y: scrollView.contentSize.height * zeroPointFive + offsetY)
-        
-//        subView?.center = CGPointMake(scrollView.contentSize.width * 0.5 + offsetX, scrollView.contentSize.height * 0.5 + offsetY)
-        
-    }
-    
-    func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) {
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            scrollView.zoomScale = 1.0
-            
-        }, completion: nil)
+        if let view = recognizer.view
+        {
+            view.transform = view.transform.scaledBy(x: recognizer.scale, y: recognizer.scale)
+            recognizer.scale = 1
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

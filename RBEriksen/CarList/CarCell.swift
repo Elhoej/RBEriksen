@@ -87,7 +87,7 @@ class ImageViewWithGradient: UIImageView
     
     func setup()
     {
-        myGradientLayer.startPoint = CGPoint(x: 0.5, y: 0.5)
+        myGradientLayer.startPoint = CGPoint(x: 0.5, y: 0.6)
         myGradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
         let colors: [CGColor] = [UIColor.clear.cgColor, UIColor.dark.cgColor]
         myGradientLayer.colors = colors

@@ -72,6 +72,8 @@ class ReviewCollectionView: UICollectionView, UICollectionViewDelegate, UICollec
     {
         let cell = dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! ReviewCell
         
+        cell.layer.zPosition = CGFloat(-indexPath.item)
+        
         if !photosArray.isEmpty
         {
             let image = photosArray[indexPath.item]
@@ -91,9 +93,8 @@ class ReviewCollectionView: UICollectionView, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
-        return CGSize(width: 285, height: 220)
+        return CGSize(width: 270, height: 220)
     }
-    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

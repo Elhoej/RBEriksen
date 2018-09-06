@@ -9,11 +9,18 @@
 import UIKit
 
 
-extension UIApplication
-{
-    var statusBarView: UIView?
-    {
-        return value(forKey: "statusBar") as? UIView
+extension Formatter {
+    static let withSeparator: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.groupingSeparator = "."
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+}
+
+extension BinaryInteger {
+    var formattedWithSeparator: String {
+        return Formatter.withSeparator.string(for: self) ?? ""
     }
 }
 
@@ -91,22 +98,21 @@ let imageCache = NSCache<NSString, AnyObject>()
 
 extension UIImageView
 {
-    func loadImageUsingCacheWithUrlString(_ urlString: String) {
+    func loadImageUsingCacheWithUrlString(_ urlString: String, completion: (() -> ())? = nil) {
         
         self.image = nil
-        
-        //check cache for image first
+
         if let cachedImage = imageCache.object(forKey: urlString as NSString) as? UIImage
         {
             self.image = cachedImage
+            completion?()
             return
         }
         
-        //otherwise fire off a new download
         guard let url = URL(string: urlString) else { return }
+        
         URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            
-            //download hit an error so lets return out
+
             if let error = error {
                 print(error)
                 return
@@ -118,6 +124,7 @@ extension UIImageView
                     imageCache.setObject(downloadedImage, forKey: urlString as NSString)
                     
                     self.image = downloadedImage
+                    completion?()
                 }
             })
         }).resume()

@@ -172,6 +172,8 @@ class LoginController: UIViewController
                 return
             }
             
+            Messaging.messaging().subscribe(toTopic: "RBEriksen")
+            
             self.dismiss(animated: true, completion: {
                 self.delegate?.observeReports()
             })

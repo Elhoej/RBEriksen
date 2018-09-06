@@ -14,10 +14,10 @@ class Report: NSObject
     var carSeries: String?
     var frontWheelPatternMeasurement: String?
     var backWheelPatternMeasurement: String?
-//    var backLeftBrakeDiscMeasurement: String?
-//    var backRightBrakeDiscMeasurement: String?
-//    var frontRightBrakeDiscMeasurement: String?
-//    var frontLeftBrakeDiscMeasurement: String?
+    var frontDiscBrakeMeasurement: String?
+    var backDiscBrakeMeasurement: String?
+    var serviceKilometers: String?
+    var serviceDays: String?
     var timestamp: NSNumber?
     var carDamagePhotos: [String: String]?
     var carPhotos: [String: String]?
@@ -31,17 +31,16 @@ class Report: NSObject
         self.carSeries = dictionary["carSeries"] as? String
         self.frontWheelPatternMeasurement = dictionary["frontWheelPatternMeasurement"] as? String
         self.backWheelPatternMeasurement = dictionary["backWheelPatternMeasurement"] as? String
-//        self.backLeftBrakeDiscMeasurement = dictionary["backLeftBrakeDiscMeasurement"] as? String
-//        self.backRightBrakeDiscMeasurement = dictionary["backRightBrakeDiscMeasurement"] as? String
-//        self.frontRightBrakeDiscMeasurement = dictionary["frontRightBrakeDiscMeasurement"] as? String
-//        self.frontLeftBrakeDiscMeasurement = dictionary["frontLeftBrakeDiscMeasurement"] as? String
+        self.frontDiscBrakeMeasurement = dictionary["frontDiscBrakeMeasurement"] as? String
+        self.backDiscBrakeMeasurement = dictionary["backDiscBrakeMeasurement"] as? String
+        self.serviceKilometers = dictionary["serviceKilometers"] as? String
+        self.serviceDays = dictionary["serviceDays"] as? String
         self.timestamp = dictionary["timestamp"] as? NSNumber
         self.carDamagePhotos = dictionary["carDamagePhotos"] as? [String: String]
         self.carPhotos = dictionary["carPhotos"] as? [String: String]
         self.carWheelPhotos = dictionary["carWheelPhotos"] as? [String: String]
         self.carBrakeDiscPhotos = dictionary["carBrakeDiscPhotos"] as? [String : String]
         self.carMiscPhotos = dictionary["carMiscPhotos"] as? [String: String]
-        
     }
 }
 

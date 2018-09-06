@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A2279A138F54584A7CFF21E9 /* Pods_RBEriksen_skabelon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCA561A66996EDAC44214951 /* Pods_RBEriksen_skabelon.framework */; };
+		7ACE935E5C274DF22573B320 /* Pods_RBEriksen.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4098EDB0AFDACE248D8B79E1 /* Pods_RBEriksen.framework */; };
+		AC1B054121062FB700222C5C /* PDFFrontPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B054021062FB700222C5C /* PDFFrontPage.swift */; };
+		AC1B056921065B2D00222C5C /* MailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B056821065B2D00222C5C /* MailController.swift */; };
 		AC1DAC5020B07678002B4B92 /* ReviewCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DAC4F20B07678002B4B92 /* ReviewCollectionView.swift */; };
 		AC1DAC5220B08C99002B4B92 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1DAC5120B08C99002B4B92 /* ReviewCell.swift */; };
 		AC33F19C20A57917005DB4CE /* UploadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC33F19B20A57917005DB4CE /* UploadingView.swift */; };
@@ -24,11 +26,14 @@
 		AC5A910B20A3353800089C2D /* WheelPatternController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A910A20A3353800089C2D /* WheelPatternController.swift */; };
 		AC5C875F20A48AFB00B8DF58 /* CarPhotoStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C875E20A48AFB00B8DF58 /* CarPhotoStage.swift */; };
 		AC5C876320A4ADB200B8DF58 /* DataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876220A4ADB200B8DF58 /* DataContainer.swift */; };
-		AC5C876520A4C56E00B8DF58 /* BrakeDiscController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876420A4C56E00B8DF58 /* BrakeDiscController.swift */; };
+		AC5C876520A4C56E00B8DF58 /* BrakeDiscControllerUNUSED.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876420A4C56E00B8DF58 /* BrakeDiscControllerUNUSED.swift */; };
 		AC5C876720A4D5E600B8DF58 /* ReviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876620A4D5E600B8DF58 /* ReviewController.swift */; };
 		AC5C876B20A4DE5C00B8DF58 /* ReviewBaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876A20A4DE5C00B8DF58 /* ReviewBaseController.swift */; };
 		AC5C876E20A4F91900B8DF58 /* Report.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5C876D20A4F91900B8DF58 /* Report.swift */; };
 		AC6086DB20AC4D1A00100BDD /* CarDamageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6086DA20AC4D1A00100BDD /* CarDamageCollectionView.swift */; };
+		AC737DF32109FC0E0051D609 /* BrakeDiscController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC737DF22109FC0E0051D609 /* BrakeDiscController.swift */; };
+		AC737DF52109FF360051D609 /* ServiceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC737DF42109FF360051D609 /* ServiceController.swift */; };
+		AC737E0B210A4E140051D609 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC737E0A210A4E140051D609 /* ContainerView.swift */; };
 		AC8EFE5B204E9FBA003C7FA0 /* Montserrat-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC8EFE5A204E9FB9003C7FA0 /* Montserrat-Italic.ttf */; };
 		AC8EFE5D204E9FD9003C7FA0 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC8EFE5C204E9FD9003C7FA0 /* Montserrat-Regular.ttf */; };
 		AC8EFE5F204EA883003C7FA0 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC8EFE5E204EA883003C7FA0 /* Montserrat-Bold.ttf */; };
@@ -37,15 +42,21 @@
 		ACA7B98820A1099800A9A2CE /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B98720A1099800A9A2CE /* CarCell.swift */; };
 		ACA7B98A20A10E8F00A9A2CE /* FooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B98920A10E8F00A9A2CE /* FooterView.swift */; };
 		ACA7B98C20A1177400A9A2CE /* CarNameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA7B98B20A1177400A9A2CE /* CarNameController.swift */; };
+		ACA84F8520E5335E00955E5A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC53B21D204D695F00BFD807 /* Info.plist */; };
 		ACE526C020A0509B0089F7C0 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE526BF20A0509B0089F7C0 /* SignUpController.swift */; };
 		ACE526C220A050AD0089F7C0 /* CarListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE526C120A050AD0089F7C0 /* CarListController.swift */; };
 		ACE526C520A054320089F7C0 /* UIColor+theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE526C420A054320089F7C0 /* UIColor+theme.swift */; };
 		ACE526C720A0624B0089F7C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ACE526C620A0624A0089F7C0 /* GoogleService-Info.plist */; };
+		ACF2DE1920E791A100F48381 /* PDFPageTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF2DE1820E791A100F48381 /* PDFPageTemplate.swift */; };
 		ACF865AF20CAB567003D3830 /* CarAnimationImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF865AE20CAB567003D3830 /* CarAnimationImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6204EE3EEF6D4CEE7880CA71 /* Pods-RBEriksen skabelon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBEriksen skabelon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RBEriksen skabelon/Pods-RBEriksen skabelon.debug.xcconfig"; sourceTree = "<group>"; };
+		0ACC3E891D31C9F03CAA3EBF /* Pods-RBEriksen.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBEriksen.release.xcconfig"; path = "Pods/Target Support Files/Pods-RBEriksen/Pods-RBEriksen.release.xcconfig"; sourceTree = "<group>"; };
+		1FA547EA05399E49FAEA9D2B /* Pods-RBEriksen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBEriksen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RBEriksen/Pods-RBEriksen.debug.xcconfig"; sourceTree = "<group>"; };
+		4098EDB0AFDACE248D8B79E1 /* Pods_RBEriksen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RBEriksen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC1B054021062FB700222C5C /* PDFFrontPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFFrontPage.swift; sourceTree = "<group>"; };
+		AC1B056821065B2D00222C5C /* MailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailController.swift; sourceTree = "<group>"; };
 		AC1DAC4F20B07678002B4B92 /* ReviewCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionView.swift; sourceTree = "<group>"; };
 		AC1DAC5120B08C99002B4B92 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		AC33F19B20A57917005DB4CE /* UploadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadingView.swift; sourceTree = "<group>"; };
@@ -64,11 +75,15 @@
 		AC5A910A20A3353800089C2D /* WheelPatternController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelPatternController.swift; sourceTree = "<group>"; };
 		AC5C875E20A48AFB00B8DF58 /* CarPhotoStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPhotoStage.swift; sourceTree = "<group>"; };
 		AC5C876220A4ADB200B8DF58 /* DataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataContainer.swift; sourceTree = "<group>"; };
-		AC5C876420A4C56E00B8DF58 /* BrakeDiscController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakeDiscController.swift; sourceTree = "<group>"; };
+		AC5C876420A4C56E00B8DF58 /* BrakeDiscControllerUNUSED.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakeDiscControllerUNUSED.swift; sourceTree = "<group>"; };
 		AC5C876620A4D5E600B8DF58 /* ReviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewController.swift; sourceTree = "<group>"; };
 		AC5C876A20A4DE5C00B8DF58 /* ReviewBaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewBaseController.swift; sourceTree = "<group>"; };
 		AC5C876D20A4F91900B8DF58 /* Report.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Report.swift; sourceTree = "<group>"; };
 		AC6086DA20AC4D1A00100BDD /* CarDamageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarDamageCollectionView.swift; sourceTree = "<group>"; };
+		AC737DF22109FC0E0051D609 /* BrakeDiscController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrakeDiscController.swift; sourceTree = "<group>"; };
+		AC737DF42109FF360051D609 /* ServiceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceController.swift; sourceTree = "<group>"; };
+		AC737E0A210A4E140051D609 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		AC8EBFF62119B14C00F40DEF /* RBEriksen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RBEriksen.entitlements; sourceTree = "<group>"; };
 		AC8EFE5A204E9FB9003C7FA0 /* Montserrat-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic.ttf"; sourceTree = "<group>"; };
 		AC8EFE5C204E9FD9003C7FA0 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		AC8EFE5E204EA883003C7FA0 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
@@ -81,9 +96,8 @@
 		ACE526C120A050AD0089F7C0 /* CarListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarListController.swift; sourceTree = "<group>"; };
 		ACE526C420A054320089F7C0 /* UIColor+theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+theme.swift"; sourceTree = "<group>"; };
 		ACE526C620A0624A0089F7C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ACF2DE1820E791A100F48381 /* PDFPageTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPageTemplate.swift; sourceTree = "<group>"; };
 		ACF865AE20CAB567003D3830 /* CarAnimationImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarAnimationImageView.swift; sourceTree = "<group>"; };
-		BCA561A66996EDAC44214951 /* Pods_RBEriksen_skabelon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RBEriksen_skabelon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E25DE700C8312490461D8F75 /* Pods-RBEriksen skabelon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RBEriksen skabelon.release.xcconfig"; path = "Pods/Target Support Files/Pods-RBEriksen skabelon/Pods-RBEriksen skabelon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,30 +105,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2279A138F54584A7CFF21E9 /* Pods_RBEriksen_skabelon.framework in Frameworks */,
+				7ACE935E5C274DF22573B320 /* Pods_RBEriksen.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6ECD20EF7B2C040EFD56D022 /* Pods */ = {
+		2D3CC3F506F4D63584073323 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6204EE3EEF6D4CEE7880CA71 /* Pods-RBEriksen skabelon.debug.xcconfig */,
-				E25DE700C8312490461D8F75 /* Pods-RBEriksen skabelon.release.xcconfig */,
+				1FA547EA05399E49FAEA9D2B /* Pods-RBEriksen.debug.xcconfig */,
+				0ACC3E891D31C9F03CAA3EBF /* Pods-RBEriksen.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		3C6A0171E425C63CBCA95692 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4098EDB0AFDACE248D8B79E1 /* Pods_RBEriksen.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		AC33F19820A5789F005DB4CE /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				AC737E3E210B46630051D609 /* PDF & Mail */,
 				AC5C876620A4D5E600B8DF58 /* ReviewController.swift */,
 				AC5C876A20A4DE5C00B8DF58 /* ReviewBaseController.swift */,
 				AC33F19B20A57917005DB4CE /* UploadingView.swift */,
 				AC1DAC4F20B07678002B4B92 /* ReviewCollectionView.swift */,
 				AC1DAC5120B08C99002B4B92 /* ReviewCell.swift */,
+				AC737E0A210A4E140051D609 /* ContainerView.swift */,
 			);
 			path = Review;
 			sourceTree = "<group>";
@@ -137,7 +161,9 @@
 			isa = PBXGroup;
 			children = (
 				AC5A910A20A3353800089C2D /* WheelPatternController.swift */,
-				AC5C876420A4C56E00B8DF58 /* BrakeDiscController.swift */,
+				AC5C876420A4C56E00B8DF58 /* BrakeDiscControllerUNUSED.swift */,
+				AC737DF22109FC0E0051D609 /* BrakeDiscController.swift */,
+				AC737DF42109FF360051D609 /* ServiceController.swift */,
 			);
 			path = Measurements;
 			sourceTree = "<group>";
@@ -188,8 +214,8 @@
 			children = (
 				AC53B210204D695F00BFD807 /* RBEriksen */,
 				AC53B20F204D695F00BFD807 /* Products */,
-				6ECD20EF7B2C040EFD56D022 /* Pods */,
-				E3DC39639CE47594048452E6 /* Frameworks */,
+				2D3CC3F506F4D63584073323 /* Pods */,
+				3C6A0171E425C63CBCA95692 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -204,6 +230,7 @@
 		AC53B210204D695F00BFD807 /* RBEriksen */ = {
 			isa = PBXGroup;
 			children = (
+				AC8EBFF62119B14C00F40DEF /* RBEriksen.entitlements */,
 				AC46754E20B813FA00CEA4A4 /* Ressources */,
 				AC46754C20B813A800CEA4A4 /* Utils */,
 				AC46754B20B8138600CEA4A4 /* Wizard */,
@@ -228,6 +255,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		AC737E3E210B46630051D609 /* PDF & Mail */ = {
+			isa = PBXGroup;
+			children = (
+				ACF2DE1820E791A100F48381 /* PDFPageTemplate.swift */,
+				AC1B054021062FB700222C5C /* PDFFrontPage.swift */,
+				AC1B056821065B2D00222C5C /* MailController.swift */,
+			);
+			path = "PDF & Mail";
+			sourceTree = "<group>";
+		};
 		ACA7B98620A1098300A9A2CE /* CarList */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,14 +284,6 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		E3DC39639CE47594048452E6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BCA561A66996EDAC44214951 /* Pods_RBEriksen_skabelon.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,11 +291,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC53B220204D695F00BFD807 /* Build configuration list for PBXNativeTarget "RBEriksen" */;
 			buildPhases = (
-				BF54B1B60EAEE77ADA1BA407 /* [CP] Check Pods Manifest.lock */,
+				DE141F277FB498029F65DA82 /* [CP] Check Pods Manifest.lock */,
 				AC53B20A204D695F00BFD807 /* Sources */,
 				AC53B20B204D695F00BFD807 /* Frameworks */,
 				AC53B20C204D695F00BFD807 /* Resources */,
-				FB6788D9279B375924B3B7EF /* [CP] Embed Pods Frameworks */,
+				5A7E70C9AED94CA5DC660213 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -284,12 +313,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Simon Elhoej Steinmejer";
 				TargetAttributes = {
 					AC53B20D204D695F00BFD807 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -318,6 +352,7 @@
 			files = (
 				AC8EFE61204EA8A4003C7FA0 /* Montserrat-SemiBold.ttf in Resources */,
 				AC8EFE5F204EA883003C7FA0 /* Montserrat-Bold.ttf in Resources */,
+				ACA84F8520E5335E00955E5A /* Info.plist in Resources */,
 				AC8EFE5D204E9FD9003C7FA0 /* Montserrat-Regular.ttf in Resources */,
 				AC8EFE5B204E9FBA003C7FA0 /* Montserrat-Italic.ttf in Resources */,
 				AC53B21C204D695F00BFD807 /* LaunchScreen.storyboard in Resources */,
@@ -330,7 +365,35 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BF54B1B60EAEE77ADA1BA407 /* [CP] Check Pods Manifest.lock */ = {
+		5A7E70C9AED94CA5DC660213 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-RBEriksen/Pods-RBEriksen-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/PDFGenerator/PDFGenerator.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PDFGenerator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RBEriksen/Pods-RBEriksen-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE141F277FB498029F65DA82 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -341,37 +404,11 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RBEriksen skabelon-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RBEriksen-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		FB6788D9279B375924B3B7EF /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RBEriksen skabelon/Pods-RBEriksen skabelon-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RBEriksen skabelon/Pods-RBEriksen skabelon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -382,13 +419,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC53B214204D695F00BFD807 /* LoginController.swift in Sources */,
+				AC1B054121062FB700222C5C /* PDFFrontPage.swift in Sources */,
 				ACE526C220A050AD0089F7C0 /* CarListController.swift in Sources */,
 				AC53B224204DDFDE00BFD807 /* Extensions.swift in Sources */,
 				ACE526C520A054320089F7C0 /* UIColor+theme.swift in Sources */,
 				AC33F19C20A57917005DB4CE /* UploadingView.swift in Sources */,
 				AC53B212204D695F00BFD807 /* AppDelegate.swift in Sources */,
 				AC5C876E20A4F91900B8DF58 /* Report.swift in Sources */,
+				AC737DF32109FC0E0051D609 /* BrakeDiscController.swift in Sources */,
+				ACF2DE1920E791A100F48381 /* PDFPageTemplate.swift in Sources */,
+				AC1B056921065B2D00222C5C /* MailController.swift in Sources */,
 				ACA7B98A20A10E8F00A9A2CE /* FooterView.swift in Sources */,
+				AC737E0B210A4E140051D609 /* ContainerView.swift in Sources */,
 				AC5A910B20A3353800089C2D /* WheelPatternController.swift in Sources */,
 				AC41138820AB905A002396F5 /* CarDamageController.swift in Sources */,
 				AC5A910920A32A6000089C2D /* PreviewPhotoView.swift in Sources */,
@@ -399,12 +441,13 @@
 				AC5C876320A4ADB200B8DF58 /* DataContainer.swift in Sources */,
 				AC5C875F20A48AFB00B8DF58 /* CarPhotoStage.swift in Sources */,
 				AC5A910720A2DB4800089C2D /* CarPhotosController.swift in Sources */,
-				AC5C876520A4C56E00B8DF58 /* BrakeDiscController.swift in Sources */,
+				AC5C876520A4C56E00B8DF58 /* BrakeDiscControllerUNUSED.swift in Sources */,
 				ACA7B98C20A1177400A9A2CE /* CarNameController.swift in Sources */,
 				AC1DAC5020B07678002B4B92 /* ReviewCollectionView.swift in Sources */,
 				AC41138A20AB9187002396F5 /* CarDamageCell.swift in Sources */,
 				AC46755020B8160900CEA4A4 /* ImageViewWithZoom.swift in Sources */,
 				AC5C876B20A4DE5C00B8DF58 /* ReviewBaseController.swift in Sources */,
+				AC737DF52109FF360051D609 /* ServiceController.swift in Sources */,
 				ACF865AF20CAB567003D3830 /* CarAnimationImageView.swift in Sources */,
 				ACE526C020A0509B0089F7C0 /* SignUpController.swift in Sources */,
 			);
@@ -438,6 +481,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -445,6 +489,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -495,6 +540,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -502,6 +548,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -533,12 +580,13 @@
 		};
 		AC53B221204D695F00BFD807 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6204EE3EEF6D4CEE7880CA71 /* Pods-RBEriksen skabelon.debug.xcconfig */;
+			baseConfigurationReference = 1FA547EA05399E49FAEA9D2B /* Pods-RBEriksen.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RBEriksen/RBEriksen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPRLQ9JET8;
-				INFOPLIST_FILE = "RBEriksen skabelon/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RBEriksen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Simon.RBEriksenEmployeeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -549,12 +597,13 @@
 		};
 		AC53B222204D695F00BFD807 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E25DE700C8312490461D8F75 /* Pods-RBEriksen skabelon.release.xcconfig */;
+			baseConfigurationReference = 0ACC3E891D31C9F03CAA3EBF /* Pods-RBEriksen.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = RBEriksen/RBEriksen.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SPRLQ9JET8;
-				INFOPLIST_FILE = "RBEriksen skabelon/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/RBEriksen/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Simon.RBEriksenEmployeeApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

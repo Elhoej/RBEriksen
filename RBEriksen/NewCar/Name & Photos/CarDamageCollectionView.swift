@@ -26,49 +26,6 @@ class CarDamageCollectionView: UICollectionView, UICollectionViewDelegateFlowLay
         register(CarDamageCell.self, forCellWithReuseIdentifier: cellId)
     }
     
-    
-//    var displayLink: CADisplayLink?
-//
-//    @objc func startDisplayLink()
-//    {
-//        stopDisplayLink()
-//
-//        let displayLink = CADisplayLink(target: self, selector: #selector(autoScrollView))
-//        displayLink.add(to: .main, forMode: .commonModes)
-//    }
-//
-//    func stopDisplayLink()
-//    {
-//        displayLink?.invalidate()
-//        displayLink = nil
-//    }
-//
-//    var xPoint: CGFloat = 0
-//
-//    @objc func autoScrollView()
-//    {
-//        let initailPoint = CGPoint(x: xPoint, y: 0)
-//
-//        if __CGPointEqualToPoint(initailPoint, self.contentOffset)
-//        {
-//            if xPoint < self.contentSize.width
-//            {
-//                xPoint += 0.6
-//            }
-//            else
-//            {
-//                xPoint = -self.frame.width
-//            }
-//
-//            let offsetPoint = CGPoint(x: xPoint, y: 0)
-//            self.contentOffset = offsetPoint
-//        }
-//        else
-//        {
-//            xPoint = self.contentOffset.x
-//        }
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         return DataContainer.shared.carDamagePhotos.isEmpty ? exampleImages.count : DataContainer.shared.carDamagePhotos.count
